@@ -2,18 +2,18 @@
 
 ## 故事背景
 
-老板：今天的会议就到这里了，小白，这个 API 你来实现一下吧。上线初期的流量比较低，你选一个既省钱又容易扩容的方案。
-小白：好的老板……
+老板：今天的会议就到这里了，小白，这个 API 你来实现一下吧。上线初期的流量比较低，你选一个既省钱又容易扩容的方案。  
+小白：好的老板……  
 
- ( 回到工位后…… )
+ ( 回到工位后…… )  
 
-小白：扩容不是大问题，但是还有比只用一台服务器更省钱的方案吗？
-大神：比一台服务器更省钱的方案，当然是零台服务器了。
-小白：零台服务器？还有这种技术？！
-大神：难道你不知道 AWS 的无服务器架构吗？
-小白：但求赐教！
+小白：扩容不是大问题，但是还有比只用一台服务器更省钱的方案吗？  
+大神：比一台服务器更省钱的方案，当然是零台服务器了。  
+小白：零台服务器？还有这种技术？！  
+大神：难道你不知道 AWS 的无服务器架构吗？  
+小白：但求赐教！  
 
- ( 大神开启教学模式 )
+ ( 大神开启教学模式 )  
 
 ## 有服务器架构
 
@@ -31,12 +31,12 @@ graph LR
 
 ## 无服务器架构
 
-无服务器架构和传统的有服务器架构并没有本质的区别，只不过是用 AWS 提供的托管服务作为**负载均衡**和 **WEB 应用程序**。
-具体来说是使用托管的 [API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html) 作为负载均衡，使用 [Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) 作为 WEB 应用程序。
+无服务器架构和传统的有服务器架构并没有本质的区别，只不过是用 AWS 提供的托管服务作为**负载均衡**和 **WEB 应用程序**。  
+具体来说是使用托管的 [API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html) 作为负载均衡，使用 [Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) 作为 WEB 应用程序。  
 
-不同之处在于 Lambda 是**按需启动**的。当 API Gateway 接收到请求时会创建 Lambda 实例来处理请求；如果 API Gateway 在一段时间内没有收到请求，那么 Lambda 实例就会被自动释放。释放后停止计费，达到**降低成本**的目的。
+不同之处在于 Lambda 是**按需启动**的。当 API Gateway 接收到请求时会创建 Lambda 实例来处理请求；如果 API Gateway 在一段时间内没有收到请求，那么 Lambda 实例就会被自动释放。释放后停止计费，达到**降低成本**的目的。  
 
-扩容也非常简单。当 API Gateway 收到的请求量超出 Lambda 实例的处理能力时，更多的 Lambda 实例就会被自动创建，实现**自动扩容**。
+扩容也非常简单。当 API Gateway 收到的请求量超出 Lambda 实例的处理能力时，更多的 Lambda 实例就会被自动创建，实现**自动扩容**。  
 
 ```mermaid
 graph LR
@@ -52,7 +52,7 @@ graph LR
 
 ### 步骤 1：安装 AWS SAM CLI
 
-AWS Serverless Application Model ( [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) ) 是一个开源框架，你可以使用这个框架在 AWS 上构建无服务器应用。
+AWS Serverless Application Model ( [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) ) 是一个开源框架，你可以使用这个框架在 AWS 上构建无服务器应用。  
 根据你使用的操作系统，依照这篇 [文档](https://docs.aws.amazon.com/zh_cn/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) 中的步骤安装 AWS SAM CLI。如果你想在本地测试你的 API，你还需要根据文档中的指示安装 Docker。
 
 ### 步骤 2：创建示例工程
@@ -223,7 +223,7 @@ HelloWorldFunction - Hello World Lambda Function ARN                      arn: a
 Successfully created/updated stack - sam-app in us-east-1
 ```
 
-至此，你的 API 就被部署到 AWS 云端了。具体来说 ```sam deploy``` 命令创建了一个 [S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) bucket，并且把 ```sam build``` 命令产生的文件上传至这个 S3 bucket。最后再用 [Cloud Formation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) 部署应用程序。
+至此，你的 API 就被部署到 AWS 云端了。具体来说 ```sam deploy``` 命令创建了一个 [S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) bucket，并且把 ```sam build``` 命令产生的文件上传至这个 S3 bucket。最后再用 [Cloud Formation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) 部署应用程序。  
 ```sam deploy``` 会输出 URL 供你测试，你可以用 ```curl``` 工具向 API 发送请求。
 
 ```shell
@@ -324,7 +324,7 @@ REPORT RequestId: 52fdfc07-2182-154f-163f-5f0f9a621d72    Duration: 3.51 ms    B
 
 ## 总结
 
-小白：原来使用 AWS SAM 构建无服务器 API 这么简单，可以让老板满意了。
+小白：原来使用 AWS SAM 构建无服务器 API 这么简单，可以让老板满意了。  
 大神：是的，无服务器架构的特点是在资费和性能上均有极大的弹性。当产品初期流量较低时，可以通过减少 Lambda 实例的数量降低成本，甚至在闲时释放所有的实例降到 0 资费。当流量增多时会自动创建更多 Lambda 实例，无需额外工作即可实现扩容。无服务器架构适合产品从 0 到 1，以及从 1 到 100 的整个生命周期。
 
 ---
