@@ -285,10 +285,10 @@ export class PipelineStack extends Stack {
 }
 ```
 
-然后再对 ```bin/pipeline.ts``` 做一些改动。  
+然后再对 ```bin/cdk.ts``` 做一些改动。  
 
 ```typescript
-// ./cdk/bin/pipeline.ts
+// ./cdk/bin/cdk.ts
 
 #!/usr/bin/env node
 import 'source-map-support/register';
@@ -610,7 +610,7 @@ export class PipelineStack extends Stack {
 ├── cdk
 │   ├── README.md
 │   ├── bin
-│   │   └── pipeline.ts
+│   │   └── cdk.ts
 │   ├── cdk.context.json
 │   ├── cdk.json
 │   ├── jest.config.js
