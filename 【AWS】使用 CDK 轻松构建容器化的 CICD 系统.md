@@ -194,7 +194,7 @@ npm WARN deprecated sane@4.1.0: some dependency vulnerabilities fixed, support f
 
 ```json
 {
-  "app": "npx ts-node --prefer-ts-exts bin/pipeline.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/cdk.ts",
   "watch": {
     "include": [
       "**"
