@@ -190,6 +190,7 @@ npm WARN deprecated sane@4.1.0: some dependency vulnerabilities fixed, support f
 ```
 
 为提升可读性，这里将自动生成的 ```cdk-stack.ts``` 和 ```cdk.test.ts``` 文件重命名为 ```pipeline-stack.ts``` 和 ```pipeline.test.ts```。  
+
 在 ```cdk.json``` 的 **context** 中添加 ```"@aws-cdk/core:newStyleStackSynthesis": true```。修改后的 ```./cdk/cdk.json``` 文件内容如下。
 
 ```json
