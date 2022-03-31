@@ -189,9 +189,8 @@ npm WARN deprecated sane@4.1.0: some dependency vulnerabilities fixed, support f
 ✅ All done!
 ```
 
-为提升可读性，这里将自动生成的 ```cdk.ts``` 和 ```cdk-stack.ts``` 文件重命名为 ```pipeline.ts``` 和 ```pipeline-stack.ts```。  
-类似地，```cdk.test.ts``` 文件也被重命名为 ```pipeline.test.ts```。  
-此外把 **```cdk.json```** 文件中的 ```cdk.ts``` 改为 ```pipeline.ts```，并在 **context** 中添加 ```"@aws-cdk/core:newStyleStackSynthesis": true```。修改后的 ```./cdk/cdk.json``` 文件内容如下。
+为提升可读性，这里将自动生成的 ```cdk-stack.ts``` 和 ```cdk.test.ts``` 文件重命名为 ```pipeline-stack.ts``` 和 ```pipeline.test.ts```。  
+在 ```cdk.json``` 的 **context** 中添加 ```"@aws-cdk/core:newStyleStackSynthesis": true```。修改后的 ```./cdk/cdk.json``` 文件内容如下。
 
 ```json
 {
@@ -237,7 +236,7 @@ npm WARN deprecated sane@4.1.0: some dependency vulnerabilities fixed, support f
 ├── cdk
 │   ├── README.md
 │   ├── bin
-│   │   └── pipeline.ts
+│   │   └── cdk.ts
 │   ├── cdk.json
 │   ├── jest.config.js
 │   ├── lib
