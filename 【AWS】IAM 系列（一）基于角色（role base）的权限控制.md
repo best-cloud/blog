@@ -2,7 +2,7 @@
 
 ## 前言
 
-IAM 全称 Identity and Access Management，中文翻译为身份和控制管理，是 AWS 提供的一项免费的权限控制服务。IAM 是云服务安全性的基石，是开发者必须掌握的技能之一。试想如果所有资源都没有权限控制，任何人都可以随意修改和删除资源，这对于云端服务来说是一件多么危险的事情。
+[IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) 全称 Identity and Access Management，中文翻译为身份和控制管理，是 AWS 提供的一项免费的权限控制服务。IAM 是云服务安全性的基石，是开发者必须掌握的技能之一。试想如果所有资源都没有权限控制，任何人都可以随意修改和删除资源，这对于云端服务来说是一件多么危险的事情。
 
 IAM 提供了多种权限控制方案，有基于用户的，也有基于角色的。这些方案都能实现权限控制的功能，因此初次接触 IAM 的开发者通常都会在方案选择上陷入迷茫。
 
@@ -97,16 +97,15 @@ IAM 把上述三要素组织在一个 json 文件中，并且给这个 json 起�
 }
 ```
 
-Version 是策略语言版本，最新版为 ```2012-10-17```。
-Statement 是一系列三元素的集合，也就是说一个策略可以配置多个三元素控制权限。
-Effect 的取值有 ```Allow``` 和 ```Deny```，分别表示允许或拒绝操作。示例中使用的是 Allow，表示允许 Action 中的操作。
-Action 就是对资源（resource）的操作，是个数组，因此可以定义对某一资源的多个操作。
-Resource 就是被控制的资源，示例中的是一个 S3 bucket。
+- Version 是策略语言版本，最新版为 ```2012-10-17```。
+- Statement 是一系列三元素的集合，也就是说一个策略可以配置多个三元素控制权限。
+- Effect 的取值有 ```Allow``` 和 ```Deny```，分别表示允许或拒绝操作。示例中使用的是 Allow，表示允许 Action 中的操作。
+- Action 就是对资源（resource）的操作，是个数组，因此可以定义对某一资源的多个操作。
+- Resource 就是被控制的资源，示例中的是一个 S3 bucket。
 
 ### 策略与角色的关系
 
-细心的读者会问，资源（resource）和操作（action）已经体现在策略中了，但是似乎没有看到角色（role）的定义。
-其实角色和策略是两个独立的实体，通过将策略关联到角色来建立二者的联系。一个角色可以被关联**多个**策略。
+细心的读者会发现，资源（resource）和操作（action）已经体现在策略中了，但是似乎没有看到角色（role）的定义。其实角色和策略是两个独立的实体，通过将策略关联到角色来建立二者的联系。一个角色可以被关联**多个**策略。
 
 如果把三元素和策略放在一起，他们会是如下的关系：
 
@@ -156,14 +155,14 @@ flowchart LR
 
 #### 初始化 CDK 项目
 
-首先创建并进入一个项目文件夹。
+创建并进入一个项目文件夹。
 
 ```bash
 mkdir iam-role-lambda
 cd iam-role-lambda
 ```
 
-然后初始化 CDK 项目。
+初始化 CDK 项目。
 
 ```bash
 cdk init app --language typescript
@@ -193,7 +192,7 @@ export class IamRoleLambdaStack extends Stack {
 
 #### 添加 Python 代码
 
-首先创建 Python 代码文件。
+创建 Python 代码文件。
 
 ```bash
 mkdir my_function
